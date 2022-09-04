@@ -19,13 +19,14 @@ class AuthenticationViewModel : ViewModel() {
     }
 
 
-    fun handleSignIn(email: String, password: String) {
+    fun handleSignIn(email: String, password: String, redirect: () -> Unit) {
         FirebaseAuth.getInstance()
             .signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task: Task<AuthResult> ->
 
                 if (!task.isSuccessful) {
                     Log.i(TAG, "Login Failed with ${task.exception}")
+                    redirect()
                 } else {
                     Log.i(TAG, "Login Successful")
                 }
@@ -37,11 +38,14 @@ class AuthenticationViewModel : ViewModel() {
             .signOut()
     }
 
-    fun handleSignUp(email: String, password: String, confirmPassword: String) {
+    fun handleSignUp(email: String, password: String, confirmPassword: String, redirect: () -> Unit) {
         if (!isEmailValid(email)) {
             return
         }
         if (password != confirmPassword) {
+            return
+        }
+        if (isPasswordValid(password)) {
             return
         }
 
@@ -51,12 +55,18 @@ class AuthenticationViewModel : ViewModel() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.i(TAG, "Email signup is successful")
+
+                    redirect()
                 } else {
                     task.exception?.let {
                         Log.i(TAG, "Email signup failed with error ${it.localizedMessage}")
                     }
                 }
             }
+    }
+
+    private fun isPasswordValid(password: String): Boolean {
+        return password.length > 5
     }
 
 

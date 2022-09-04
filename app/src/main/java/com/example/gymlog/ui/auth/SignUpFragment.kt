@@ -1,5 +1,6 @@
 package com.example.gymlog.ui.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.gymlog.R
 import com.example.gymlog.databinding.FragmentSignUpBinding
+import com.example.gymlog.ui.MainActivity
 
 class SignUpFragment : Fragment() {
 
@@ -25,6 +27,20 @@ class SignUpFragment : Fragment() {
         binding.tvSubFooter.setOnClickListener{
             Navigation.findNavController(binding.root).navigate(SignUpFragmentDirections.actionSignUpFragmentToSignInFragment())
         }
+
+
+        binding.btnSignUp.setOnClickListener {
+
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+
+            authViewModel.handleSignUp(email, password, confirmPassword = password ) {
+                val intent = Intent(requireContext(), MainActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
+
         return binding.root
     }
 

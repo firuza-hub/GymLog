@@ -23,7 +23,7 @@
             android:contentDescription="@string/background_image" />
 
         <Button
-            android:id="@+id/btnSignUp"
+            android:id="@+id/btnSignIn"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -120,9 +120,9 @@
             android:text="@string/do_not_have_an_account"
             android:textColor="@color/Button_1"
             android:fontFamily="@font/inter"
-            app:layout_constraintEnd_toEndOf="@+id/btnSignUp"
-            app:layout_constraintStart_toStartOf="@+id/btnSignUp"
-            app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
+            app:layout_constraintEnd_toEndOf="@+id/btnSignIn"
+            app:layout_constraintStart_toStartOf="@+id/btnSignIn"
+            app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
 
         <TextView
             android:id="@+id/tvSubFooter"
