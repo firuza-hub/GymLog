@@ -1,3 +1,6 @@
+
+//TODO: Implement toaster messages (centralized)
+//TODO: Implemented model validation (check best practise -> viewmodel or ui layer)
 package com.example.gymlog.ui.auth
 
 import android.content.ContentValues.TAG
@@ -24,11 +27,11 @@ class AuthenticationViewModel : ViewModel() {
             .signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task: Task<AuthResult> ->
 
-                if (!task.isSuccessful) {
-                    Log.i(TAG, "Login Failed with ${task.exception}")
+                if (task.isSuccessful) {
+                    Log.i(TAG, "Login Successful")
                     redirect()
                 } else {
-                    Log.i(TAG, "Login Successful")
+                    Log.i(TAG, "Login Failed with ${task.exception}")
                 }
             }
     }

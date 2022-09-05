@@ -4,17 +4,21 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.example.gymlog.R
+import com.example.gymlog.databinding.ActivityMainBinding
 import com.example.gymlog.ui.auth.AuthenticationActivity
 import com.example.gymlog.ui.auth.AuthenticationViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private val authViewModel: AuthenticationViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         authViewModel.authenticationState.observe(this) {
             if (it == AuthenticationViewModel.AuthState.UNAUTHENTICATED) {
@@ -22,6 +26,8 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        binding.btnLogout.setOnClickListener { FirebaseAuth.getInstance().signOut() }
     }
 }
 

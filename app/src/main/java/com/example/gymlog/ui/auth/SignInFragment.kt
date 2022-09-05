@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -24,19 +25,21 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        val intent = Intent(requireContext(), MainActivity::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_in, container, false)
         binding.tvSubFooter.setOnClickListener {
             Navigation.findNavController(binding.root)
                 .navigate(SignInFragmentDirections.actionSignInFragmentToSignUpFragment())
         }
 
-        val email = binding.etEmail.text.toString()
-        val password = binding.etPassword.text.toString()
 
         binding.btnSignIn.setOnClickListener {
+
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
             authViewModel.handleSignIn(email, password) {
-                val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
+               // Toast.makeText(requireContext(), "signed in", Toast.LENGTH_SHORT).show()
             }
 
         }
