@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+        <KeyFrameSet>
+            <KeyAttribute
+                android:rotationY="0"
+                motion:framePosition="30"
+                motion:motionTarget="@+id/cvWorkoutTypeEditable" />
+            <KeyAttribute
+                android:rotationY="180"
+                motion:framePosition="85"
+                motion:motionTarget="@+id/cvWorkoutTypeEditable" />
+            <KeyAttribute
+                android:rotationY="180"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/cvWorkoutTypeEditable" />
+
+            <KeyAttribute
+                android:translationY="50dp"
+                motion:framePosition="30"
+                motion:motionTarget="@+id/cvWorkoutTypeEditable" />
+            <KeyAttribute
+                android:translationX="50dp"
+                motion:framePosition="30"
+                motion:motionTarget="@+id/cvWorkoutTypeEditable" />
+            <KeyAttribute
+                android:translationY="50dp"
+                motion:framePosition="30"
+                motion:motionTarget="@+id/tvWorkoutType" />
+            <KeyAttribute
+                android:translationX="50dp"
+                motion:framePosition="30"
+                motion:motionTarget="@+id/tvWorkoutType" />
+            <KeyAttribute
+                android:alpha="0.0"
+                motion:framePosition="20"
+                motion:motionTarget="@+id/tvWorkoutType" />
+
+            <KeyAttribute
+                android:alpha="0.9"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/cvWorkoutTypeEditable" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="90"
+                motion:motionTarget="@+id/etWorkoutType" />
+            <KeyAttribute
+                android:alpha="1"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/etWorkoutType" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="90"
+                motion:motionTarget="@+id/btnCloseInputBox" />
+            <KeyAttribute
+                android:alpha="1"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/btnCloseInputBox" />
+        </KeyFrameSet>
+        <OnClick
+            motion:clickAction="transitionToEnd"
+            motion:targetId="@+id/cvWorkoutType" />
+
+    </Transition>
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+        <KeyFrameSet>
+            <KeyAttribute
+                android:rotationY="0"
+                motion:framePosition="30"
+                motion:motionTarget="@+id/cvWorkoutTypeEditable" />
+            <KeyAttribute
+                android:rotationY="180"
+                motion:framePosition="85"
+                motion:motionTarget="@+id/cvWorkoutTypeEditable" />
+            <KeyAttribute
+                android:rotationY="180"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/cvWorkoutTypeEditable" />
+
+            <KeyAttribute
+                android:translationY="50dp"
+                motion:framePosition="30"
+                motion:motionTarget="@+id/cvWorkoutTypeEditable" />
+            <KeyAttribute
+                android:translationX="50dp"
+                motion:framePosition="30"
+                motion:motionTarget="@+id/cvWorkoutTypeEditable" />
+            <KeyAttribute
+                android:translationY="50dp"
+                motion:framePosition="30"
+                motion:motionTarget="@+id/tvWorkoutType" />
+            <KeyAttribute
+                android:translationX="50dp"
+                motion:framePosition="30"
+                motion:motionTarget="@+id/tvWorkoutType" />
+            <KeyAttribute
+                android:alpha="0.0"
+                motion:framePosition="20"
+                motion:motionTarget="@+id/tvWorkoutType" />
+
+            <KeyAttribute
+                android:alpha="0.9"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/cvWorkoutTypeEditable" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="90"
+                motion:motionTarget="@+id/etWorkoutType" />
+            <KeyAttribute
+                android:alpha="1"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/etWorkoutType" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="90"
+                motion:motionTarget="@+id/btnCloseInputBox" />
+            <KeyAttribute
+                android:alpha="1"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/btnCloseInputBox" />
+        </KeyFrameSet>
+        <OnClick
+            motion:clickAction="transitionToStart"
+            motion:targetId="@+id/btnCloseInputBox" />
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start"></ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/cvWorkoutTypeEditable"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="100dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/tvWorkoutType"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/etWorkoutType"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="@+id/cvWorkoutTypeEditable"
+            motion:layout_constraintEnd_toEndOf="@+id/cvWorkoutTypeEditable"
+            motion:layout_constraintStart_toStartOf="@+id/cvWorkoutTypeEditable"
+            motion:layout_constraintTop_toTopOf="@+id/cvWorkoutTypeEditable"
+            motion:layout_constraintVertical_bias="0.0" />
+        <Constraint
+            android:id="@+id/btnCloseInputBox"
+            android:visibility="visible"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            motion:layout_constraintTop_toTopOf="@+id/etWorkoutType"
+            motion:layout_constraintEnd_toEndOf="@+id/etWorkoutType"/>
+    </ConstraintSet>
+</MotionScene>
