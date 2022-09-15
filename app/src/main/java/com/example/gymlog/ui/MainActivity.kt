@@ -9,12 +9,11 @@ import com.example.gymlog.R
 import com.example.gymlog.databinding.ActivityMainBinding
 import com.example.gymlog.ui.auth.AuthenticationActivity
 import com.example.gymlog.ui.auth.AuthenticationViewModel
-import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val authViewModel: AuthenticationViewModel by viewModels()
+    private val authViewModel: AuthenticationViewModel by viewModels{AuthenticationViewModel.Factory(application)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnLogout.setOnClickListener { FirebaseAuth.getInstance().signOut() }
+        binding.btnLogout.setOnClickListener { authViewModel.handleSignOut() }
     }
 }
 

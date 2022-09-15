@@ -9,9 +9,10 @@
         <entry key="..\:/Users/Firuza/AndroidStudioProjects/GymLog/app/src/main/res/layout/activity_authentication.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Firuza/AndroidStudioProjects/GymLog/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Firuza/AndroidStudioProjects/GymLog/app/src/main/res/layout/fragment_create_log.xml" value="0.24010416666666667" />
-        <entry key="..\:/Users/Firuza/AndroidStudioProjects/GymLog/app/src/main/res/layout/fragment_sign_in.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Firuza/AndroidStudioProjects/GymLog/app/src/main/res/layout/fragment_sign_up.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Firuza/AndroidStudioProjects/GymLog/app/src/main/res/layout/fragment_sign_in.xml" value="0.1" />
+        <entry key="..\:/Users/Firuza/AndroidStudioProjects/GymLog/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/Firuza/AndroidStudioProjects/GymLog/app/src/main/res/layout/fragment_signin.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Firuza/AndroidStudioProjects/GymLog/app/src/main/res/layout/toast.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
