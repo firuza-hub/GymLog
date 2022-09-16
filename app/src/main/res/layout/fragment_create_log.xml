@@ -110,7 +110,6 @@
                     app:layout_constraintStart_toStartOf="@+id/cvWorkoutType"
                     app:layout_constraintTop_toTopOf="@+id/cvWorkoutType" />
 
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etWorkoutType"
                     android:layout_width="0dp"
@@ -137,7 +136,6 @@
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-
                 <ImageView
                     android:id="@+id/btnCloseInputBox"
                     android:layout_width="wrap_content"
@@ -148,27 +146,11 @@
                     android:src="@drawable/ic_done"
                     android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="@+id/etWorkoutType"
-                    app:layout_constraintTop_toTopOf="@+id/etWorkoutType" />
+                    app:layout_constraintTop_toTopOf="@+id/etWorkoutType"
+                    android:contentDescription="@string/close_popup"/>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cvPicture"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_margin="2dp"
-                    app:cardBackgroundColor="#F4CCDF"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/cvNotes"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cvWorkoutType">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:text="PICTURE"
-                        android:textSize="30sp" />
-                </androidx.cardview.widget.CardView>
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvWorkoutSubtype"
@@ -191,6 +173,57 @@
                 </androidx.cardview.widget.CardView>
 
 
+
+                <!--PICTURE_START-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvPictureEditable"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="2dp"
+                    app:cardBackgroundColor="#F4CCDF"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvPicture"
+                    app:layout_constraintEnd_toEndOf="@+id/cvPicture"
+                    app:layout_constraintStart_toStartOf="@+id/cvPicture"
+                    app:layout_constraintTop_toTopOf="@+id/cvPicture" />
+
+                <ImageView
+                    android:id="@+id/btnCloseInputBox_picture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:elevation="100dp"
+                    android:src="@drawable/ic_done"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/cvPictureEditable"
+                    app:layout_constraintTop_toTopOf="@+id/cvPictureEditable"
+                    android:contentDescription="@string/close_popup" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvPicture"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="2dp"
+                    app:cardBackgroundColor="#F4CCDF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/cvNotes"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cvWorkoutType">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:text="PICTURE"
+                        android:textSize="30sp" />
+                </androidx.cardview.widget.CardView>
+
+                <!--PICTURE_END-->
+
+
+
+                <!--NOTES_START-->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvNotesEditable"
                     android:layout_width="0dp"
@@ -228,7 +261,6 @@
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-
                 <ImageView
                     android:id="@+id/btnCloseInputBox_Notes"
                     android:layout_width="wrap_content"
@@ -239,7 +271,8 @@
                     android:src="@drawable/ic_done"
                     android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="@+id/etNotes"
-                    app:layout_constraintTop_toTopOf="@+id/etNotes" />
+                    app:layout_constraintTop_toTopOf="@+id/etNotes"
+                    android:contentDescription="@string/close_popup"/>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvNotes"
@@ -262,7 +295,7 @@
                         android:textSize="30sp" />
 
                 </androidx.cardview.widget.CardView>
-
+                <!--NOTES_END-->
 
             </androidx.constraintlayout.motion.widget.MotionLayout>
 
