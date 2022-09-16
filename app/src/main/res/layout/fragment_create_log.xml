@@ -78,6 +78,9 @@
                 android:layout_margin="3dp"
                 app:layoutDescription="@xml/fragment_create_log_xml_constraintlayout_scene">
 
+
+
+                <!--WORKOUT_TYPE_START-->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvWorkoutType"
                     android:layout_width="0dp"
@@ -149,8 +152,61 @@
                     app:layout_constraintTop_toTopOf="@+id/etWorkoutType"
                     android:contentDescription="@string/close_popup"/>
 
+                <!--WORKOUT_TYPE_END-->
 
 
+
+
+                <!--WORKOUT_SUBTYPE_START-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvWorkoutSubTypeEditable"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="2dp"
+                    app:cardBackgroundColor="#EFB3D0"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintEnd_toEndOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintStart_toStartOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintTop_toTopOf="@+id/cvWorkoutSubtype" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etWorkoutSubType"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="10dp"
+                    android:elevation="100dp"
+                    android:gravity="top"
+                    android:hint="Workout Type"
+                    android:visibility="invisible"
+                    app:boxBackgroundMode="none"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintEnd_toEndOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintStart_toStartOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintTop_toTopOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="start"
+                        android:imeOptions="actionDone"
+                        android:minLines="1"
+                        android:textAlignment="viewStart"
+                        android:textSize="20sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/btnCloseInputBox_Workout_subtype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:elevation="100dp"
+                    android:src="@drawable/ic_done"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/etWorkoutSubType"
+                    app:layout_constraintTop_toTopOf="@+id/etWorkoutSubType"
+                    android:contentDescription="@string/close_popup"/>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvWorkoutSubtype"
@@ -172,6 +228,7 @@
                         android:textSize="30sp" />
                 </androidx.cardview.widget.CardView>
 
+                <!--WORKOUT_SUBTYPE_END-->
 
 
                 <!--PICTURE_START-->
