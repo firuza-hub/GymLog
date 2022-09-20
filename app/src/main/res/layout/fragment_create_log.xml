@@ -3,10 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.gymlog.ui.createLog.CreateLogViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.createLog.CreateLogFragment">
+
 
         <TextView
             android:id="@+id/tvHeader"
@@ -43,7 +49,7 @@
                     android:id="@+id/tvLogDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="DD/MM/YYYY HH:MM"
+                    android:text="@{viewModel.date}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/ivSelectLogDate"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -57,6 +63,8 @@
                     android:src="@drawable/calendar"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -94,12 +102,20 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
+                        android:id="@+id/tvWorkoutTypeLabel"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"
                         android:text="Workout Type"
                         android:textAllCaps="true"
                         android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/tvWorkoutTypeInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:textSize="20sp" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -221,11 +237,19 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
+                        android:id="@+id/tvWorkoutSubTypeLabel"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"
                         android:text="WORKOUT SUBTYPE"
                         android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/tvWorkoutSubTypeInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:textSize="20sp" />
                 </androidx.cardview.widget.CardView>
 
                 <!--WORKOUT_SUBTYPE_END-->
@@ -344,12 +368,19 @@
                     app:layout_constraintTop_toBottomOf="@+id/cvWorkoutSubtype">
 
                     <TextView
+                        android:id="@+id/tvNotesLabel"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"
                         android:text="Notes"
                         android:textAllCaps="true"
                         android:textSize="30sp" />
+                    <TextView
+                        android:id="@+id/tvNotesInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:textSize="20sp" />
 
                 </androidx.cardview.widget.CardView>
                 <!--NOTES_END-->
@@ -360,13 +391,12 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/btnSignIn"
+            android:id="@+id/btnSaveLog"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:backgroundTint="@color/Button_1"
-            android:text="Save"
-            android:textAllCaps="false"
+            android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

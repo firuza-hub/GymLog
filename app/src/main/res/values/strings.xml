@@ -30,4 +30,5 @@
     <string name="password_input_mandatory_validation">Please enter the password</string>
     <string name="log_your_gym_session">Log your gym session!</string>
     <string name="close_popup">close popup</string>
+    <string name="save">Save</string>
 </resources>
