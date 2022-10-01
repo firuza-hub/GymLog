@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 abstract class BaseViewModel(app: Application): AndroidViewModel(app) {
 
-    protected val fb = FirebaseAuth.getInstance()
+    protected val firebaseAuth = FirebaseAuth.getInstance()
     protected val _validationError = MutableLiveData<String>()
     val validationError: LiveData<String>
         get() = _validationError

@@ -39,14 +39,15 @@ class CreateLogViewModel(application: Application): BaseViewModel(application) {
 
 
 
-    fun saveLog(){
-        val log = WorkoutLog(
+    fun saveLog(redirect: () -> Unit) {
+        val log = WorkoutLog(null,
              workoutType, workoutSubtype, notes, picture, date.value!!
         )
 
         gymLogs.add(log)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                redirect()
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)

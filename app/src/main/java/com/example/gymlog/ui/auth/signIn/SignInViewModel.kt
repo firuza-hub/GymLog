@@ -10,10 +10,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.gymlog.R
 import com.example.gymlog.base.BaseViewModel
-import com.example.gymlog.ui.auth.AuthenticationViewModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
 
 class SignInViewModel(app:Application):BaseViewModel(app) {
 
@@ -35,7 +33,7 @@ class SignInViewModel(app:Application):BaseViewModel(app) {
         resetErrors()
         if (signInInputHasErrors(email, password)) return
 
-        fb.signInWithEmailAndPassword(email, password)
+        firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task: Task<AuthResult> ->
 
                 if (task.isSuccessful) {

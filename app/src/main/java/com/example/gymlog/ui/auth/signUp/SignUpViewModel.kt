@@ -38,11 +38,11 @@ class SignUpViewModel(app:Application): BaseViewModel(app) {
         resetErrors()
         if (signUpInputHasErrors(email, password, name)) return
 
-        fb.createUserWithEmailAndPassword(
+        firebaseAuth.createUserWithEmailAndPassword(
             email, password
         ).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                fb.currentUser?.updateProfile(
+                firebaseAuth.currentUser?.updateProfile(
                     UserProfileChangeRequest.Builder().setDisplayName(name).build()
                 )
                 Log.i(ContentValues.TAG, "Email signup is successful")

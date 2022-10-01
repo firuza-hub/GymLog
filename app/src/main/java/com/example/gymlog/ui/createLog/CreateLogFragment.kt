@@ -3,21 +3,18 @@ package com.example.gymlog.ui.createLog
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.example.gymlog.R
 import com.example.gymlog.base.BaseFragment
 import com.example.gymlog.databinding.FragmentCreateLogBinding
-import com.example.gymlog.ui.auth.signIn.SignInViewModel
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 
 class CreateLogFragment : BaseFragment() {
@@ -93,11 +90,14 @@ class CreateLogFragment : BaseFragment() {
             _viewModel.workoutSubtype = binding.etWorkoutSubType.editText?.text.toString()
             _viewModel.notes = binding.etNotes.editText?.text.toString()
             _viewModel._date.value = binding.tvLogDate.text.toString()
-            _viewModel.saveLog()
+            _viewModel.saveLog {redirectToCalendar()}
         }
         return binding.root
     }
 
+    private fun redirectToCalendar(){
+        Navigation.findNavController(binding.root).navigate(CreateLogFragmentDirections.actionCreateLogFragmentToCalendarFragment())
+    }
     private fun openTimePicker() {
         val timePicker = TimePickerDialog.OnTimeSetListener{ _, hour, minute ->
             myCalendar.set(Calendar.HOUR, hour)

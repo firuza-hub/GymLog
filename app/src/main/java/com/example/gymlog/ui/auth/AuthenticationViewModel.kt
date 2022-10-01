@@ -1,16 +1,8 @@
 package com.example.gymlog.ui.auth
 
 import android.app.Application
-import android.content.ContentValues.TAG
-import android.util.Log
-import android.view.View
 import androidx.lifecycle.*
-import com.example.gymlog.R
 import com.example.gymlog.base.BaseViewModel
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 
 class AuthenticationViewModel(app: Application) : BaseViewModel(app) {
 
@@ -23,7 +15,7 @@ class AuthenticationViewModel(app: Application) : BaseViewModel(app) {
     }
 
     fun handleSignOut() {
-        fb.signOut()
+        firebaseAuth.signOut()
     }
 
     enum class AuthState {
