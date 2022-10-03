@@ -40,6 +40,8 @@ class CreateLogViewModel(application: Application): BaseViewModel(application) {
 
 
     fun saveLog(redirect: () -> Unit) {
+
+        if(!validateInputs()) return
         val log = WorkoutLog(null,
              workoutType, workoutSubtype, notes, picture, date.value!!
         )
@@ -52,6 +54,18 @@ class CreateLogViewModel(application: Application): BaseViewModel(application) {
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
             }
+    }
+
+    private fun validateInputs(): Boolean {
+        var errors = mutableListOf<String>()
+        if( workoutType.isEmpty()) {
+            errors.add("Workout type cannot be empty")
+        }
+        if( workoutSubtype.isEmpty()) {
+            errors.add("Workout subtype cannot be empty")
+        }
+        _validationError.value = errors
+        return errors.size == 0
     }
 
     class Factory(private val app: Application) : ViewModelProvider.Factory {

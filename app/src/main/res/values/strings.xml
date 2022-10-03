@@ -31,4 +31,6 @@
     <string name="log_your_gym_session">Log your gym session!</string>
     <string name="close_popup">close popup</string>
     <string name="save">Save</string>
+    <string name="log_list">Log List</string>
+    <string name="log_a_workout">Log a workout</string>
 </resources>

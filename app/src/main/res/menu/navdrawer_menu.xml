@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/logListFragment"
+        android:title="@string/log_list" />
+
+    <item
+        android:id="@+id/createLogFragment"
+        android:title="@string/log_a_workout" />
+</menu>

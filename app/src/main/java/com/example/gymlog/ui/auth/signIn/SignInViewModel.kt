@@ -41,7 +41,7 @@ class SignInViewModel(app:Application):BaseViewModel(app) {
                     redirect()
                 } else {
                     task.exception!!.localizedMessage?.let {
-                        _validationError.value = it// ErrorMessage(it, ErrorType.Validation)
+                        _validationError.value = mutableListOf(it)// ErrorMessage(it, ErrorType.Validation)
                         Log.i(ContentValues.TAG, "Login Failed with: $it")
                     }
 
