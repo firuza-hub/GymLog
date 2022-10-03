@@ -2,11 +2,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.gymlog.ui.auth.signIn.SignInViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.auth.SignInFragment">
+        tools:context=".ui.auth.signIn.SignInFragment">
 
         <ImageView
             android:id="@+id/ivBackground"
@@ -93,6 +97,18 @@
             app:layout_constraintTop_toBottomOf="@+id/tvHeader"
             android:inputType="textEmailAddress" />
 
+        <TextView
+            android:id="@+id/tvEmailError"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.emailError}"
+            android:textColorHint="@color/design_default_color_error"
+            android:textAlignment="textEnd"
+            android:textColor="@color/design_default_color_error"
+            app:layout_constraintEnd_toEndOf="@+id/etEmail"
+            app:layout_constraintStart_toStartOf="@+id/etEmail"
+            app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="0dp"
@@ -111,6 +127,18 @@
             app:layout_constraintStart_toStartOf="@+id/tvHeader"
             app:layout_constraintTop_toBottomOf="@+id/etEmail"
             android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/tvPasswordError"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.passwordError}"
+            android:textColorHint="@color/design_default_color_error"
+            android:textAlignment="textEnd"
+            android:textColor="@color/design_default_color_error"
+            app:layout_constraintEnd_toEndOf="@+id/etPassword"
+            app:layout_constraintStart_toStartOf="@+id/etPassword"
+            app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
         <TextView
             android:id="@+id/tvFooter"

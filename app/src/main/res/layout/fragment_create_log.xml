@@ -1,11 +1,408 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.createLog.CreateLogFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.gymlog.ui.createLog.CreateLogViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.createLog.CreateLogFragment">
+
+
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="601dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/log_your_gym_session"
+            android:textFontWeight="800"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/pink_light_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHeader">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginVertical="12dp">
+
+                <TextView
+                    android:id="@+id/tvLogDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.date}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ivSelectLogDate"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivSelectLogDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/calendar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvLogInputs"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+            <androidx.constraintlayout.motion.widget.MotionLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="3dp"
+                app:layoutDescription="@xml/fragment_create_log_xml_constraintlayout_scene">
+
+
+
+                <!--WORKOUT_TYPE_START-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvWorkoutType"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="2dp"
+                    app:cardBackgroundColor="#E37CAE"
+                    app:layout_constraintBottom_toTopOf="@+id/cvPicture"
+                    app:layout_constraintEnd_toStartOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tvWorkoutTypeLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:text="Workout Type"
+                        android:textAllCaps="true"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/tvWorkoutTypeInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:textSize="20sp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvWorkoutTypeEditable"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="2dp"
+                    app:cardBackgroundColor="#E37CAE"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvWorkoutType"
+                    app:layout_constraintEnd_toEndOf="@+id/cvWorkoutType"
+                    app:layout_constraintStart_toStartOf="@+id/cvWorkoutType"
+                    app:layout_constraintTop_toTopOf="@+id/cvWorkoutType" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etWorkoutType"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="10dp"
+                    android:elevation="100dp"
+                    android:gravity="top"
+                    android:hint="Workout Type"
+                    android:visibility="invisible"
+                    app:boxBackgroundMode="none"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvWorkoutType"
+                    app:layout_constraintEnd_toEndOf="@+id/cvWorkoutType"
+                    app:layout_constraintStart_toStartOf="@+id/cvWorkoutType"
+                    app:layout_constraintTop_toTopOf="@+id/cvWorkoutType"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="start"
+                        android:imeOptions="actionDone"
+                        android:minLines="1"
+                        android:textAlignment="viewStart"
+                        android:textSize="20sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/btnCloseInputBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:elevation="100dp"
+                    android:src="@drawable/ic_done"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/etWorkoutType"
+                    app:layout_constraintTop_toTopOf="@+id/etWorkoutType"
+                    android:contentDescription="@string/close_popup"/>
+
+                <!--WORKOUT_TYPE_END-->
+
+
+
+
+                <!--WORKOUT_SUBTYPE_START-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvWorkoutSubTypeEditable"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="2dp"
+                    app:cardBackgroundColor="#EFB3D0"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintEnd_toEndOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintStart_toStartOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintTop_toTopOf="@+id/cvWorkoutSubtype" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etWorkoutSubType"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="10dp"
+                    android:elevation="100dp"
+                    android:gravity="top"
+                    android:hint="Workout Type"
+                    android:visibility="invisible"
+                    app:boxBackgroundMode="none"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintEnd_toEndOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintStart_toStartOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintTop_toTopOf="@+id/cvWorkoutSubtype"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="start"
+                        android:imeOptions="actionDone"
+                        android:minLines="1"
+                        android:textAlignment="viewStart"
+                        android:textSize="20sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/btnCloseInputBox_Workout_subtype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:elevation="100dp"
+                    android:src="@drawable/ic_done"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/etWorkoutSubType"
+                    app:layout_constraintTop_toTopOf="@+id/etWorkoutSubType"
+                    android:contentDescription="@string/close_popup"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvWorkoutSubtype"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="2dp"
+                    app:cardBackgroundColor="#EFB3D0"
+                    app:layout_constraintBottom_toTopOf="@+id/cvNotes"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cvWorkoutType"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tvWorkoutSubTypeLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:text="WORKOUT SUBTYPE"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/tvWorkoutSubTypeInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:textSize="20sp" />
+                </androidx.cardview.widget.CardView>
+
+                <!--WORKOUT_SUBTYPE_END-->
+
+
+                <!--PICTURE_START-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvPictureEditable"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="2dp"
+                    app:cardBackgroundColor="#F4CCDF"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvPicture"
+                    app:layout_constraintEnd_toEndOf="@+id/cvPicture"
+                    app:layout_constraintStart_toStartOf="@+id/cvPicture"
+                    app:layout_constraintTop_toTopOf="@+id/cvPicture" />
+
+                <ImageView
+                    android:id="@+id/btnCloseInputBox_picture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:elevation="100dp"
+                    android:src="@drawable/ic_done"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/cvPictureEditable"
+                    app:layout_constraintTop_toTopOf="@+id/cvPictureEditable"
+                    android:contentDescription="@string/close_popup" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvPicture"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="2dp"
+                    app:cardBackgroundColor="#F4CCDF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/cvNotes"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cvWorkoutType">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:text="PICTURE"
+                        android:textSize="30sp" />
+                </androidx.cardview.widget.CardView>
+
+                <!--PICTURE_END-->
+
+
+
+                <!--NOTES_START-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvNotesEditable"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="2dp"
+                    app:cardBackgroundColor="#F9E4EE"
+                    app:layout_constraintBottom_toBottomOf="@id/cvNotes"
+                    app:layout_constraintEnd_toEndOf="@id/cvNotes"
+                    app:layout_constraintStart_toStartOf="@id/cvNotes"
+                    app:layout_constraintTop_toTopOf="@id/cvNotes" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etNotes"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="10dp"
+                    android:elevation="100dp"
+                    android:gravity="top"
+                    android:hint="Notes"
+                    android:visibility="invisible"
+                    app:boxBackgroundMode="none"
+                    app:layout_constraintBottom_toBottomOf="@id/cvNotes"
+                    app:layout_constraintEnd_toEndOf="@id/cvNotes"
+                    app:layout_constraintStart_toStartOf="@id/cvNotes"
+                    app:layout_constraintTop_toTopOf="@id/cvNotes"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="start"
+                        android:imeOptions="actionDone"
+                        android:minLines="1"
+                        android:textAlignment="viewStart"
+                        android:textSize="20sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/btnCloseInputBox_Notes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:elevation="100dp"
+                    android:src="@drawable/ic_done"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/etNotes"
+                    app:layout_constraintTop_toTopOf="@+id/etNotes"
+                    android:contentDescription="@string/close_popup"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvNotes"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="2dp"
+                    app:cardBackgroundColor="#F9E4EE"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cvPicture"
+                    app:layout_constraintTop_toBottomOf="@+id/cvWorkoutSubtype">
+
+                    <TextView
+                        android:id="@+id/tvNotesLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:text="Notes"
+                        android:textAllCaps="true"
+                        android:textSize="30sp" />
+                    <TextView
+                        android:id="@+id/tvNotesInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:textSize="20sp" />
+
+                </androidx.cardview.widget.CardView>
+                <!--NOTES_END-->
+
+            </androidx.constraintlayout.motion.widget.MotionLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btnSaveLog"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/Button_1"
+            android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cvLogInputs"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

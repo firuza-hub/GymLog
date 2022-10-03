@@ -9,5 +9,27 @@
         android:id="@+id/createLogFragment"
         android:name="com.example.gymlog.ui.createLog.CreateLogFragment"
         android:label="fragment_create_log"
-        tools:layout="@layout/fragment_create_log" />
+        tools:layout="@layout/fragment_create_log" >
+        <action
+            android:id="@+id/action_createLogFragment_to_calendarFragment"
+            app:destination="@id/logListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logListFragment"
+        android:name="com.example.gymlog.ui.calendar.LogListFragment"
+        android:label="fragment_log_list"
+        tools:layout="@layout/fragment_loglist" >
+        <action
+            android:id="@+id/action_logListFragment_to_logPreviewFragment"
+            app:destination="@id/logPreviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logPreviewFragment"
+        android:name="com.example.gymlog.ui.logPreview.LogPreviewFragment"
+        android:label="fragment_log_preview"
+        tools:layout="@layout/fragment_log_preview" >
+        <argument
+            android:name="logId"
+            app:argType="string" />
+    </fragment>
 </navigation>
