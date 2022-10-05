@@ -14,28 +14,32 @@ import com.example.gymlog.databinding.FragmentLoglistBinding
 
 class LogListFragment : BaseFragment() {
 
-    private lateinit var binding:FragmentLoglistBinding
+    private lateinit var binding: FragmentLoglistBinding
 
     override val _viewModel: LogListViewModel by viewModels {
         LogListViewModel.Factory(
             requireActivity().application
         )
     }
-    private lateinit var adapter:LogListItemAdapter
+    private lateinit var adapter: LogListItemAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_loglist, container, false)
-        binding.lifecycleOwner= viewLifecycleOwner
+        binding.lifecycleOwner = viewLifecycleOwner
         adapter = LogListItemAdapter {
             Navigation.findNavController(binding.root)
                 .navigate(LogListFragmentDirections.actionLogListFragmentToLogPreviewFragment(it))
         }
 
 
-        _viewModel.logs.observe(viewLifecycleOwner, Observer{logs -> adapter.setData(logs)})
+        _viewModel.logs.observe(viewLifecycleOwner, Observer { logs -> adapter.setData(logs) })
+        _viewModel.listLoading.observe(viewLifecycleOwner, Observer { showLoader ->
+            if (showLoader) binding.pbListLoader.visibility = View.VISIBLE
+            else binding.pbListLoader.visibility = View.INVISIBLE
+        })
         binding.rvLogList.adapter = adapter
         return binding.root
     }
