@@ -29,10 +29,10 @@ class LogListFragment : BaseFragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_loglist, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-        adapter = LogListItemAdapter {
+        adapter = LogListItemAdapter({
             Navigation.findNavController(binding.root)
                 .navigate(LogListFragmentDirections.actionLogListFragmentToLogPreviewFragment(it))
-        }
+        }, { _viewModel.deleteLog(it) })
 
 
         _viewModel.logs.observe(viewLifecycleOwner, Observer { logs -> adapter.setData(logs) })

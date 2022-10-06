@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 <data>
     <variable
         name="item"
         type="com.example.gymlog.data.models.WorkoutLog" />
 </data>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/clListItem"
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="80dp"
+        app:layoutDescription="@xml/fragment_loglist_item_xml_constraintlayout_scene">
 
         <TextView
             android:id="@+id/tvWorkoutType"
@@ -19,9 +22,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="6dp"
             android:hint="Workout Type"
-            android:textStyle="bold"
             android:text="@{item.workoutType}"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/tvWorkoutDate"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,11 +34,12 @@
             android:id="@+id/tvWorkoutSubType"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:hint="Workout SubType"
             android:text="@{item.workoutSubtype}"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tvWorkoutDate"
+            app:layout_constraintEnd_toStartOf="@+id/cvDelete"
             app:layout_constraintStart_toStartOf="@+id/tvWorkoutType"
             app:layout_constraintTop_toBottomOf="@+id/tvWorkoutType"
             app:layout_constraintVertical_bias="0.0" />
@@ -50,10 +54,28 @@
             android:text="@{item.date}"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cvDelete"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvDelete"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/design_default_color_error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_delete" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
 </layout>

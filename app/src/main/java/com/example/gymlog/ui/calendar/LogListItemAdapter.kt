@@ -8,7 +8,7 @@ import com.example.gymlog.R
 import com.example.gymlog.data.models.WorkoutLog
 import com.example.gymlog.databinding.FragmentLoglistItemBinding
 
-class LogListItemAdapter(val redirectToLogView: (id:String) -> Unit) : RecyclerView.Adapter<LogListItemAdapter.LogListItemViewHolder>() {
+class LogListItemAdapter(val redirectToLogView: (id:String) -> Unit,val deleteLog: (id:String) -> Unit) : RecyclerView.Adapter<LogListItemAdapter.LogListItemViewHolder>() {
 
     private var data = mutableListOf<WorkoutLog>()
 
@@ -24,7 +24,9 @@ class LogListItemAdapter(val redirectToLogView: (id:String) -> Unit) : RecyclerV
     override fun onBindViewHolder(holder: LogListItemViewHolder, position: Int) {
         val currentLog = data[position]
         holder.binding.item = currentLog
+        holder.binding.ivDelete.setOnClickListener{deleteLog(currentLog.id!!)}
         holder.binding.root.setOnClickListener{redirectToLogView(currentLog.id!!)}
+
     }
 
 
