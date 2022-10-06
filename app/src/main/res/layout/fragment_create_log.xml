@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.example.gymlog.ui.createLog.CreateLogViewModel" />
@@ -280,6 +281,19 @@
                     app:layout_constraintTop_toTopOf="@+id/cvPictureEditable"
                     android:contentDescription="@string/close_popup" />
 
+                <ImageView
+                    android:id="@+id/btnCamera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="100dp"
+                    android:src="@drawable/ic_camera"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/cvPictureEditable"
+                    app:layout_constraintTop_toTopOf="@+id/cvPictureEditable"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvPictureEditable"
+                    app:layout_constraintStart_toStartOf="@+id/cvPictureEditable"
+                    android:contentDescription="@string/open_camera" />
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvPicture"
                     android:layout_width="0dp"
@@ -404,5 +418,16 @@
             app:layout_constraintVertical_bias="0.0" />
 
 
+        <ProgressBar
+            android:id="@+id/pbSaveLoader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="invisible"
+            android:translationZ="1000dp"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

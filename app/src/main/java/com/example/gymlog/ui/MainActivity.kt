@@ -29,15 +29,6 @@ class MainActivity : AppCompatActivity() {
         val navController = this.findNavController(R.id.myNavHostFragment)
         NavigationUI.setupWithNavController(binding.navView, navController)
 
-
-        navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, args: Bundle? ->
-            if (nd.id == nc.graph.startDestinationId) {
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-            } else {
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-            }
-        }
-
         authViewModel.authenticationState.observe(this) {
             if (it == AuthenticationViewModel.AuthState.UNAUTHENTICATED) {
                 val intent = Intent(this, AuthenticationActivity::class.java)

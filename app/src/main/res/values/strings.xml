@@ -33,4 +33,6 @@
     <string name="save">Save</string>
     <string name="log_list">Log List</string>
     <string name="log_a_workout">Log a workout</string>
+    <string name="open_camera">Open Camera</string>
+    <string name="settings">Settings</string>
 </resources>

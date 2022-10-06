@@ -8,7 +8,7 @@ data class WorkoutLog(
     val workoutType: String,
     val workoutSubtype: String,
     val notes: String,
-    val picture: String,
+    val pictureId: String,
     val date: String
 ){
     constructor(): this(null, "", "", "", "", "")
