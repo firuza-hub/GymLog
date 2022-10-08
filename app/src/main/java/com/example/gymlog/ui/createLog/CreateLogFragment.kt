@@ -43,9 +43,6 @@ class CreateLogFragment : BaseFragment() {
         )
     }
 
-    private lateinit var currentPhotoPath: String
-    private lateinit var currentPhotoName: String
-
     private val formatter = SimpleDateFormat("dd.MM.yyyy HH:mm aa")
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
     private lateinit var cameraActivityResultLauncher: ActivityResultLauncher<Intent>
@@ -157,6 +154,17 @@ class CreateLogFragment : BaseFragment() {
             _viewModel.notes = binding.etNotes.editText?.text.toString()
             _viewModel._date.value = binding.tvLogDate.text.toString()
             _viewModel.saveLog { redirectToCalendar() }
+        }
+
+        binding.btnRemovePicture.setOnClickListener {
+            _viewModel.bitMap = null
+            _viewModel.currentPhotoName.value = ""
+            _viewModel.currentPhotoPath.value = ""
+
+            binding.btnCamera.setImageResource(R.drawable.ic_camera)
+        }
+        _viewModel.currentPhotoPath.observe(viewLifecycleOwner) {
+            binding.btnRemovePicture.isClickable = !it.isNullOrEmpty()
         }
 
         _viewModel.showLoader.observe(
@@ -273,8 +281,8 @@ class CreateLogFragment : BaseFragment() {
             storageDir /* directory */
         ).apply {
             // Save a file: path for use with ACTION_VIEW intents
-            currentPhotoPath = absolutePath
-            currentPhotoName = name
+            _viewModel.currentPhotoPath.value = absolutePath
+            _viewModel.currentPhotoName.value = name
         }
     }
 
@@ -299,10 +307,9 @@ class CreateLogFragment : BaseFragment() {
             inSampleSize = scaleFactor
             inPurgeable = true
         }
-        BitmapFactory.decodeFile(currentPhotoPath, bmOptions)?.also { bitmap ->
+        BitmapFactory.decodeFile(_viewModel.currentPhotoPath.value, bmOptions)?.also { bitmap ->
             binding.btnCamera.setImageBitmap(bitmap)
             _viewModel.bitMap = bitmap
-            _viewModel.photoName = currentPhotoName
         }
     }
 }

@@ -383,6 +383,15 @@ S
             <KeyAttribute
                 android:alpha="0"
                 motion:framePosition="90"
+                motion:motionTarget="@+id/btnRemovePicture" />
+            <KeyAttribute
+                android:alpha="1"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/btnRemovePicture" />
+
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="90"
                 motion:motionTarget="@+id/btnCamera" />
             <KeyAttribute
                 android:alpha="1"
@@ -434,6 +443,16 @@ S
                 android:alpha="1"
                 motion:framePosition="100"
                 motion:motionTarget="@+id/btnCloseInputBox_picture" />
+
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="90"
+                motion:motionTarget="@+id/btnRemovePicture" />
+            <KeyAttribute
+                android:alpha="1"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/btnRemovePicture" />
+
             <KeyAttribute
                 android:alpha="0"
                 motion:framePosition="90"
@@ -590,6 +609,16 @@ S
             android:layout_marginEnd="5dp"
             motion:layout_constraintTop_toTopOf="@+id/cvPictureEditable"
             motion:layout_constraintEnd_toEndOf="@+id/cvPictureEditable"/>
+
+        <Constraint
+            android:id="@+id/btnRemovePicture"
+            android:visibility="visible"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            motion:layout_constraintEnd_toStartOf="@+id/btnCloseInputBox_picture"
+            motion:layout_constraintTop_toTopOf="@+id/btnCloseInputBox_picture"/>
 
         <Constraint
             android:id="@+id/btnCamera"
