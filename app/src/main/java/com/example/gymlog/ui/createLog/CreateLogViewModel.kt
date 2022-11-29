@@ -23,12 +23,15 @@ class CreateLogViewModel(application: Application) : BaseViewModel(application) 
     private val TAG = "CREATE_LOG_VIEWMODEL"
     private val db = Firebase.firestore
 
-    var photoName: String = ""
     var bitMap: Bitmap? = null
     var workoutType: String = ""
     var workoutSubtype: String = ""
     var notes: String = ""
     var pictureId: String = ""
+
+
+    val currentPhotoPath = MutableLiveData<String>()
+    val currentPhotoName = MutableLiveData<String>()
 
     val _date = MutableLiveData<String>()
     val date: LiveData<String>
@@ -41,6 +44,8 @@ class CreateLogViewModel(application: Application) : BaseViewModel(application) 
     private val gymLogs = db.collection("gymLogs")
 
     init {
+        currentPhotoPath.value = ""
+        currentPhotoName.value = ""
         _showLoader.value = false
         _date.value = formatter.format(Date())
         Log.i(TAG, formatter.format(Date()))
@@ -54,9 +59,9 @@ class CreateLogViewModel(application: Application) : BaseViewModel(application) 
             return
         }
 
-        if (bitMap != null && photoName.isNotBlank()) {
+        if (bitMap != null && currentPhotoName.value!!.isNotBlank()) {
             Log.d(TAG, "Picture Save Initiated")
-            if (!savePic(bitMap!!, photoName)) {
+            if (!savePic(bitMap!!, currentPhotoName.value!!)) {
                 _showLoader.value = false
                 return
             }

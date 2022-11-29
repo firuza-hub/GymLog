@@ -282,6 +282,18 @@
                     android:contentDescription="@string/close_popup" />
 
                 <ImageView
+                    android:id="@+id/btnRemovePicture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:elevation="100dp"
+                    android:src="@drawable/ic_cross"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toStartOf="@+id/btnCloseInputBox_picture"
+                    app:layout_constraintTop_toTopOf="@+id/btnCloseInputBox_picture"
+                    android:contentDescription="@string/close_popup" />
+
+                <ImageView
                     android:id="@+id/btnCamera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
