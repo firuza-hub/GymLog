@@ -32,7 +32,7 @@ class LogListFragment : BaseFragment() {
         adapter = LogListItemAdapter({
             Navigation.findNavController(binding.root)
                 .navigate(LogListFragmentDirections.actionLogListFragmentToLogPreviewFragment(it))
-        }, { _viewModel.deleteLog(it) })
+        }, {  _viewModel.deleteLog(it) })
 
 
         _viewModel.logs.observe(viewLifecycleOwner, Observer { logs -> adapter.setData(logs) })

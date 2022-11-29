@@ -6,7 +6,9 @@ import androidx.lifecycle.*
 import com.example.gymlog.base.BaseViewModel
 import com.example.gymlog.data.models.WorkoutLog
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
@@ -23,6 +25,7 @@ class LogListViewModel(app: Application) : BaseViewModel(app) {
     val logs: LiveData<MutableList<WorkoutLog>>
         get() = _logs
 
+    private val storage = FirebaseStorage.getInstance()
 
     init {
         _listLoading.value = false
@@ -30,7 +33,7 @@ class LogListViewModel(app: Application) : BaseViewModel(app) {
         Log.i(TAG, "Gym logs have been fetched")
     }
 
-    fun fetchLogs() {
+    private fun fetchLogs() {
         _listLoading.value = true
         gymLogs.get().addOnSuccessListener {
 
@@ -45,12 +48,20 @@ class LogListViewModel(app: Application) : BaseViewModel(app) {
     }
 
     fun deleteLog(id: String) {
-        gymLogs.document(id).delete().addOnSuccessListener {
-            Log.i(TAG, "Log has been deleted: $id")
-            //TODO: delete picture if any linked
-            //TODO: MOTION LAYOUT: AUTOMATE SWIPE TILL THE END AND BACK TO THE START
-            //      SWIPE BACK ITEMS DELETE CARD IF ANOTHER ITEMS DELETE CARD HAS BEEN SWIPED
-            fetchLogs()
+        viewModelScope.launch {
+            val pictureId = gymLogs.document(id).get().await().toObject<WorkoutLog>()?.pictureId
+            gymLogs.document(id).delete().addOnSuccessListener {
+                Log.i(TAG, "Log has been deleted: $id")
+                if (!pictureId.isNullOrEmpty()) {
+                    val fileRef = storage.getReferenceFromUrl(pictureId);
+                    fileRef.delete().addOnSuccessListener {
+                        Log.i(TAG, "Log picutre has been deleted: $pictureId")
+                    }
+                }
+                //TODO: MOTION LAYOUT: AUTOMATE SWIPE TILL THE END AND BACK TO THE START
+                //      SWIPE BACK ITEMS DELETE CARD IF ANOTHER ITEMS DELETE CARD HAS BEEN SWIPED
+                fetchLogs()
+            }
         }
     }
 
